@@ -19,7 +19,7 @@ async def main():
     urls = list()
     apis =[
         "gdFu4ZKNPdekdkTz7iyVQm2Kx0qHkAbE","BYrTd7QtaDh63koJk1DAW3ZveVRxZybi"]
-    ad="https://viijujyl.com/dc/?blockID=389545"
+    ad="https://viijujyl.com/dc/?blockID=390293"
     for api in apis:
         for _ in range(randint (3,5)):
             #url ="https://api.webscrapingapi.com/v1?api_key=jjgCEsYztVo8MpvwtZ2rVqZxMwTKQXFo&url=https%3A%2F%2Fwww.profitableratecpm.com%2Fes8iaffr0n%3Fkey%3Da180891d7e00848a91909a7b8081d758&render_js=1&wait_until=networkidle0&wait_for=10000&country=il"
