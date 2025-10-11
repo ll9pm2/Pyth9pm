@@ -1,45 +1,52 @@
-print("start")
-import asyncio
-import aiohttp  # Requires installing: pip install aiohttp
-from random import randint
+import http.client
+import threading
 
-async def fetch_url(session, url):
-    """Asynchronously fetches the content of a URL using aiohttp."""
+def send_request(api):
+    print("start",api)
+    url = "/scrape/web"
+    payload = "{\"url\":\"https://viikqoye.com/dc/?blockID=394255\",\"proxyType\":\"residential\",\"proxyCountry\":\"US\",\"blockResources\":false,\"blockAds\":false,\"blockUrls\":[],\"wait\":10000,\"jsScenario\":[],\"extractRules\":{\"title\":\"h1\"},\"screenshot\":true,\"jsRendering\":true,\"extractEmails\":false,\"includeOnlyTags\":[],\"excludeTags\":[],\"outputFormat\":[]}"
+    headers = {
+    'x-api-key': api,
+    'Content-Type': "application/json"
+}
     try:
-        async with session.get(url) as response:
-            response.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
-            return await response.text()  # Or response.read() for binary data
-    except aiohttp.ClientError as e:  # Catch connection errors and HTTP errors
-        print(f"Error fetching {url}: {e}")
-        return None
+        conn = http.client.HTTPSConnection("api.hasdata.com")
+        conn.request("POST", url, payload, headers)
+        res = conn.getresponse()
+        data = res.read()
+        
+        print(f"Request to {url} finished with status: {res.status}")
+        # Process the response data as needed
+    except Exception as e:
+        print(f"Error sending request to {url}: {e}")
+    finally:
+        conn.close()
 
+# Define your request details
 
-async def main():
-    """Creates an aiohttp session and fetches multiple URLs concurrently."""
-    urls = list()
-    apis =[
-        "g5SSb9o4ylvjfttl5L6RTWsHVDNRDdby","vp69TYluPGKrAeahouF5X0X9LEtfiTLM"]
-    ad="https://viikqoye.com/dc/?blockID=394140"
-    for api in apis:
-        for _ in range(randint (3,5)):
-            #url ="https://api.webscrapingapi.com/v1?api_key=jjgCEsYztVo8MpvwtZ2rVqZxMwTKQXFo&url=https%3A%2F%2Fwww.profitableratecpm.com%2Fes8iaffr0n%3Fkey%3Da180891d7e00848a91909a7b8081d758&render_js=1&wait_until=networkidle0&wait_for=10000&country=il"
-          
-            url = f"https://api.webscrapingapi.com/v2?api_key={api}&url={ad}&country=us&render_js=1"
-            urls.append(url)
-
-    async with aiohttp.ClientSession() as session:
-        tasks = [fetch_url(session, url) for url in urls]
-        results = await asyncio.gather(*tasks)  # Run all tasks concurrently
-
-    # Process the results (optional)
-    for i, result in enumerate(results):
-        if result:
-            print("proxy" in result)
-        else:
-            print(f"Failed to fetch {urls[i]}")
-
-
-if __name__ == "__main__":
-   for i in range (1000):
-     print(i)
-     asyncio.run(main())
+for i in range(110):
+	# Create a list of threads
+	threads = []
+	apis = ["338c9f49-d8b7-469d-84ce-d637ef751d15",
+	"21f8d9ba-186b-4a75-845a-bf8b5885292e",
+	"bf10ce57-122a-41be-8ae3-d7ae1ccfd0fd",
+	"cca17caa-126b-46e9-902b-68b1bc1ed473",
+	"0c8b6ab6-183a-4506-9650-707c68c0751e",
+	"3a1aeb60-e567-40f2-9705-e44ba717374e",
+	"56e05ac3-f9aa-407c-b792-3c2b45858e10",
+	"2a46b0a9-968b-4e96-98fc-148ca58fab64",
+	"14337553-7293-4edf-af18-0bbc9ae36165",
+	"3071f8e3-109d-4514-ab9d-592550c2d595",
+	"b2cafe42-4df4-4e98-93b9-2397b8e03b03"
+	] 
+	
+	for api in apis:
+	    thread = threading.Thread(target=send_request, args=(api,))
+	    threads.append(thread)
+	    thread.start()
+	
+	# Wait for all threads to complete
+	for thread in threads:
+	    thread.join()
+	
+	print("All requests finished.")
