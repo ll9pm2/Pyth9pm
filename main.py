@@ -6,7 +6,7 @@ import threading
 import time
 
 # Define the number of requests you want to send concurrently
-NUM_REQUESTS = 10
+NUM_REQUESTS = 5
 
 def send_request(request_number,api):
     """
