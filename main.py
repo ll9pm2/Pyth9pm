@@ -86,7 +86,7 @@ def send_requests_with_threading(api):
     print(f"Total elapsed time: {global_duration:.2f} seconds")
 
 if __name__ == '__main__':
-    for i in range(3):
+    for i in range(34):
       
       apis =[ "y8NPWBpoZLjk7wpPeLo68VGpuuKomIZqd01ZwVHxwzdjOED2bA00HUhxyB8m",
       "TdS8afidCHdyOVCnVlDPkgIrF0EjdmdXaMMFrNvHTeAGBZ66a3jHdgI7qcYU",
