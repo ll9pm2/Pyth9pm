@@ -6,7 +6,7 @@ import threading
 import time
 
 # Define the number of requests you want to send concurrently
-NUM_REQUESTS = 5
+NUM_REQUESTS = 1
 
 def send_request(request_number,api):
     """
@@ -86,7 +86,7 @@ def send_requests_with_threading(api):
     print(f"Total elapsed time: {global_duration:.2f} seconds")
 
 if __name__ == '__main__':
-    for i in range(34):
+    for i in range(170):
       
       apis =[ "ZCjsszgP92BXMo46dMeyKiXZI2QCaMN1o3dWxqTgDAhIaNW0Bxf2bZMYx3AG",
       "CeJVq2nKvmvW0DwDQWNQ39Ze4i1QYBkyZHHb0adTS4dK7muaTi6viIJ1Q4Am",
