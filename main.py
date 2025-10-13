@@ -6,7 +6,7 @@ import threading
 import time
 
 # Define the number of requests you want to send concurrently
-NUM_REQUESTS = 5
+NUM_REQUESTS = 10
 
 def send_request(request_number,api):
     """
@@ -88,10 +88,12 @@ def send_requests_with_threading(api):
 if __name__ == '__main__':
     for i in range(34):
       
-      apis =[ "y8NPWBpoZLjk7wpPeLo68VGpuuKomIZqd01ZwVHxwzdjOED2bA00HUhxyB8m",
-      "TdS8afidCHdyOVCnVlDPkgIrF0EjdmdXaMMFrNvHTeAGBZ66a3jHdgI7qcYU",
-      "KHPXNIzr9w145chazhWlDOrHwrHkqUrBdxpkXWWseTXSX5YsDYKMZNlpqwFt",
-      "OJFFapvF2nkQmeOWHLeDi6QXRTXeLK2kKQ5ngCUMZ4VxBOCgzoxXAkiCpp8t"
+      apis =[ "ZCjsszgP92BXMo46dMeyKiXZI2QCaMN1o3dWxqTgDAhIaNW0Bxf2bZMYx3AG",
+      "CeJVq2nKvmvW0DwDQWNQ39Ze4i1QYBkyZHHb0adTS4dK7muaTi6viIJ1Q4Am",
+     "k1bAssA6JN733BvLOib5Bkheoo5sCOmAF5kG68WEJtdpExCwMUNe00vkT9On",
+      "XxaXKgfOMlcDWKToF8gBUpsXAFNNePO2C9zBo05xMmjfWLHstDZ2eaDNH2nh",
+      "OXieKQZUYqBTDf3AtdoNhquYDCeqyITOyHFHrR7ImUX1xlLpBG9W7HJGADiV",
+      "jT3tEk8cjdXtpoafP2yaahUTULIXHA7WDQLpydUFMa1IW50bDT4dMqjRVJOB"
       
       ]
       threads2 = []
