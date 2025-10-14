@@ -1,6 +1,4 @@
-import requests
-# Install the Python Requests library:
-# `pip install requests`
+
 import requests
 import threading
 import time
