@@ -30,7 +30,7 @@ def send_request(request_number,api):
     'browserActions': [
         {
             'type': 'wait',
-            'wait': 20,
+            'wait': 10,
             'when': 'beforeload',
             'ignoreErrors': False,
         },
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     for i in range(1):
 
       apis =[
-"XZ9VLsIsaAWGFM77tuvrUAqRSsq3wjl2z1edY1En4GTQZE3dK5T58phCvqKg",
+"AKOO1OyIVKyJrW56LrCyoklzCGOQpEtQwtB4xQpg8GSXvdoMcBNHpd2Ap81g",
 #"foFYfHyndG3ev44yZjoaeRQanTqpHeHZyk8UbxmpFKacddWZYmDW6aK19pXG",
 #"WIOxjWiR89XI9gNyrFajmZo4UB48Agntk3zcaoTHqYbxgYNpuw1qvSo4LGeV",
 #"V0y3PHKMCHPEljlPsuDzcQdiL2Cpu36e5Zg2Cz3O5ip5SCa0KXoCq9ebrWQ9",
