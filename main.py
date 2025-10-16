@@ -1,10 +1,12 @@
 
 import requests
+# Install the Python Requests library:
+# `pip install requests`
+import requests
 import threading
 import time
-
 # Define the number of requests you want to send concurrently
-NUM_REQUESTS = 1
+NUM_REQUESTS = 2000
 
 def send_request(request_number,api):
     """
@@ -18,16 +20,17 @@ def send_request(request_number,api):
     params = {
     'key':api ,
 }
-
+    url="https://plusshow1.wasmer.app/"
     json_data = {
     'cmd': 'request.get',
-    'url': 'https://viikqoye.com/dc/?blockID=394923',
+    'url': url,
     'datadomeBypass': True,
+    'mobileProxy': True,
     'proxyCountry': 'UnitedStates',
     'browserActions': [
         {
             'type': 'wait',
-            'wait': 10,
+            'wait': 20,
             'when': 'beforeload',
             'ignoreErrors': False,
         },
@@ -39,8 +42,8 @@ def send_request(request_number,api):
     print(f"[{time.strftime('%H:%M:%S')}] {thread_name}: Starting Request #{request_number}...")
 
     try:
-        response = requests.post('https://publisher.scrappey.com/api/v1', params=params, headers=headers, json=json_data)
-  
+        response = requests.post('https://publisher.scrappey.com/api/v1', params=params, headers=headers, json=json_data,timeout =180)
+        print(response.text)
         #response = requests.get(
 #            url='https://api.webscrapingapi.com/v2?',
 #            params={
@@ -53,7 +56,7 @@ def send_request(request_number,api):
         duration = time.time() - start_time
         print(f"[{time.strftime('%H:%M:%S')}] {thread_name}: Finished Request #{request_number}. Status Code: {response.status_code} in {duration:.2f}s")
         # print('Response Body: ', response.content) # Uncomment to see the content
-    
+
     except requests.exceptions.RequestException as e:
         print(f"[{time.strftime('%H:%M:%S')}] {thread_name}: Error in Request #{request_number}: {e}")
 
@@ -63,7 +66,7 @@ def send_requests_with_threading(api):
     and waits for them all to complete.
     """
     threads = []
-    
+
     global_start_time = time.time()
     print(f"--- Starting {NUM_REQUESTS} concurrent requests using threads ---")
 
@@ -84,15 +87,21 @@ def send_requests_with_threading(api):
     print(f"Total elapsed time: {global_duration:.2f} seconds")
 
 if __name__ == '__main__':
-    for i in range(170):
-      
-      apis =[ "ZCjsszgP92BXMo46dMeyKiXZI2QCaMN1o3dWxqTgDAhIaNW0Bxf2bZMYx3AG",
-      "CeJVq2nKvmvW0DwDQWNQ39Ze4i1QYBkyZHHb0adTS4dK7muaTi6viIJ1Q4Am",
-     "k1bAssA6JN733BvLOib5Bkheoo5sCOmAF5kG68WEJtdpExCwMUNe00vkT9On",
-      "XxaXKgfOMlcDWKToF8gBUpsXAFNNePO2C9zBo05xMmjfWLHstDZ2eaDNH2nh",
-      "OXieKQZUYqBTDf3AtdoNhquYDCeqyITOyHFHrR7ImUX1xlLpBG9W7HJGADiV",
-      "jT3tEk8cjdXtpoafP2yaahUTULIXHA7WDQLpydUFMa1IW50bDT4dMqjRVJOB"
-      
+    for i in range(1):
+
+      apis =[
+"SBCa2IYH2hj0wn6EslcvpxQoKqjs5Z1DKasw0BfIVSWDenrrMrzvKaC9pOJg",
+#"foFYfHyndG3ev44yZjoaeRQanTqpHeHZyk8UbxmpFKacddWZYmDW6aK19pXG",
+#"WIOxjWiR89XI9gNyrFajmZo4UB48Agntk3zcaoTHqYbxgYNpuw1qvSo4LGeV",
+#"V0y3PHKMCHPEljlPsuDzcQdiL2Cpu36e5Zg2Cz3O5ip5SCa0KXoCq9ebrWQ9",
+#"YwV8AJ1Us1aVx9khjuW1own4BNHWdsVbgJl8fhXZLOlouDIQ3oBRZhfBDZAr",
+#"QQ0HlumtdCope5yIMxAGpxEsh8EGhCSkMF2c72BZyYcNYA6m92Kw4hgYtESJ",
+#"srdl5D98b4p7JHLNGOmNUKyTklcujxUbNDsHEiZV5ypleqSmXF4AOELu1Q3k",
+#"wOpu7ciUb8rA5wAQfBVNpEAs9PGkrYwrvFInOdMyZPX9p1xa94mJw16U7s6V",
+#"TXK4Nb3xOvD7GPpTpml5Kb77fentjzAMfvZ5EGvoeq6RHTd0Y0q8QUWCZptH"
+
+
+
       ]
       threads2 = []
       for api in apis:
@@ -102,8 +111,3 @@ if __name__ == '__main__':
         thread2.start() # Immediately start the thread, running the request concurrently
       for thread2 in threads2:
         thread2.join()
-    
-
-      
-
-
