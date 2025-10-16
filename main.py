@@ -6,7 +6,7 @@ import requests
 import threading
 import time
 # Define the number of requests you want to send concurrently
-NUM_REQUESTS = 5000
+NUM_REQUESTS = 2000
 
 def send_request(request_number,api):
     """
@@ -26,13 +26,18 @@ def send_request(request_number,api):
     'url': url,
     'datadomeBypass': True,
     'mobileProxy': True,
-    #'proxyCountry': 'UnitedStates',
+    'proxyCountry': 'UnitedStates',
     'browserActions': [
         {
             'type': 'wait',
             'wait': 20,
             'when': 'beforeload',
             'ignoreErrors': False,
+        },
+        {
+            'type': 'click',
+            'cssSelector': 'body',
+            'wait': 5,
         },
     ],
 }
@@ -90,7 +95,7 @@ if __name__ == '__main__':
     for i in range(1):
 
       apis =[
-"oPrYuDuqnsNebvRzJjGvJx5DfkAvswKnmzVIQ1VdyloKKk3Yf4YoHqSBofnn",
+"37Rg9TG5Ny50XJPXt8khXe1h6zS0VB4lotXtzrM6alffsGgnVNR5mxhwtoWQ",
 #"foFYfHyndG3ev44yZjoaeRQanTqpHeHZyk8UbxmpFKacddWZYmDW6aK19pXG",
 #"WIOxjWiR89XI9gNyrFajmZo4UB48Agntk3zcaoTHqYbxgYNpuw1qvSo4LGeV",
 #"V0y3PHKMCHPEljlPsuDzcQdiL2Cpu36e5Zg2Cz3O5ip5SCa0KXoCq9ebrWQ9",
