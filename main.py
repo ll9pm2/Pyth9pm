@@ -6,7 +6,7 @@ import requests
 import threading
 import time
 # Define the number of requests you want to send concurrently
-NUM_REQUESTS = 5000
+NUM_REQUESTS = 2000
 
 def send_request(request_number,api):
     """
