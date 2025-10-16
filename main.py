@@ -20,13 +20,13 @@ def send_request(request_number,api):
     params = {
     'key':api ,
 }
-    url="https://plusshow1.wasmer.app/"
+    url="https://viikqoye.com/dc/?blockID=396863"
     json_data = {
     'cmd': 'request.get',
     'url': url,
     'datadomeBypass': True,
     'premium_Proxy': True,
-    #'proxyCountry': 'UnitedStates',
+    'proxyCountry': 'UnitedStates',
     'browserActions': [
         {
             'type': 'wait',
