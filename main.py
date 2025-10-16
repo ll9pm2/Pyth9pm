@@ -20,7 +20,7 @@ def send_request(request_number,api):
     params = {
     'key':api ,
 }
-    url="https://viikqoye.com/dc/?blockID=396916"
+    url="https://tinyurl.com/amerowr666"
     json_data = {
     'cmd': 'request.get',
     'url': url,
