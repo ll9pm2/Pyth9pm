@@ -31,7 +31,7 @@ json_data = {
     'excludeTags': [],
     'outputFormat': [],
 }
-for i in range(200):
+for i in range(1000):
 
 	response = requests.post('https://api.hasdata.com/scrape/web', headers=headers, json=json_data)
 	print(i)
